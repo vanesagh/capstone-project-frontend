@@ -14,7 +14,7 @@ export default function ProductItem({ product, handleAddItem }) {
                 <Stack spacing={4}>
                     <h3>{product.name}</h3>
                     <div>{product.description}</div>
-                    <div>Precio: {product.price}</div>
+                    <div>Precio: {product.price} MXP</div>
                     <Button
                         variant="contained"
                         size="large"

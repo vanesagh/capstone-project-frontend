@@ -1,25 +1,30 @@
 import Head from 'next/head';
 import Image from 'next/image';
-import { Inter } from 'next/font/google';
-import styles from '@/styles/Home.module.css';
 import ProductItem from './components/ProductItem';
 import PageDescription from './components/PageDescription';
 import StoreNavBar from './components/StoreNavBar';
-import { useState } from 'react';
 import { useRouter } from 'next/router';
+import { useItemsSelectedContext } from './itemsSelected-provider';
+import styles from '@/styles/Home.module.css';
+import { Inter } from 'next/font/google';
 
 const inter = Inter({ subsets: ['latin'] })
 
+
+
+
 export default function Home({ products }) {
-  const [itemsList, setItemList] = useState([]);
+
   const router = useRouter();
+  const { itemsList, setItemsList } = useItemsSelectedContext();
+  //console.log(itemsList);
 
   console.log(router.pathname);
 
   const handleAddItem = (product) => {
     const items = itemsList;
     //console.log(product);
-    setItemList([...items, product]);
+    setItemsList([...items, product]);
 
   };
   return (
@@ -39,7 +44,10 @@ export default function Home({ products }) {
           ))}
 
         </section>
+
+
       </main>
+
     </>
   )
 };
@@ -50,14 +58,14 @@ export async function getServerSideProps() {
       _id: 1,
       name: "Babka de chocolate",
       description: "Pan trenzado relleno de chocolate",
-      price: "230 MXP",
+      price: "230",
       imageUrl: "https://www.foodandwine.com/thmb/3alI1eL7tHTvNuAH9jQlHDDx2Yw=/1200x0/filters:no_upscale():max_bytes(150000):strip_icc()/RECIPE0116-XL-chocolate-babka-1a2e39def5f043f58caf48b97456a119.jpg"
     },
     {
       _id: 2,
       name: "Roles de canela",
       description: "Pan trenzado relleno de chocolate",
-      price: "20 MXP",
+      price: "20",
       imageUrl: "https://www.savynaturalista.com/wp-content/uploads/Sugar-Free-Cinanamon-Rolls-6.jpg"
     },
 

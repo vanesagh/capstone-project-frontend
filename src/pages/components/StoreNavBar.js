@@ -16,7 +16,7 @@ export default function StoreNavBar({ itemsList }) {
     const router = useRouter();
     return (
         <Box sx={{ flexGrow: 1 }}>
-            <AppBar position="static">
+            <AppBar position="fixed">
                 <Toolbar>
                     <IconButton
                         size="large"
