@@ -3,13 +3,25 @@ import Image from 'next/image';
 import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import ProductItem from './components/ProductItem';
-import Header from './components/Header';
-import { Grid } from '@mui/material';
 import PageDescription from './components/PageDescription';
+import StoreNavBar from './components/StoreNavBar';
+import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home({ products }) {
+  const [itemsList, setItemList] = useState([]);
+  const router = useRouter();
+
+  console.log(router.pathname);
+
+  const handleAddItem = (product) => {
+    const items = itemsList;
+    //console.log(product);
+    setItemList([...items, product]);
+
+  };
   return (
     <>
       <Head>
@@ -18,12 +30,12 @@ export default function Home({ products }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <Header />
+      <StoreNavBar itemsList={itemsList} />
       <main className={`${styles.main} ${inter.className}`}>
         <PageDescription title="Nuestros productos" />
         <section>
           {products.map((product) => (
-            <ProductItem key={product._id} product={product} />
+            <ProductItem key={product._id} product={product} handleAddItem={handleAddItem} />
           ))}
 
         </section>

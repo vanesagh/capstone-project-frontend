@@ -1,6 +1,6 @@
 import { Button, Grid, Stack } from "@mui/material";
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, handleAddItem }) {
     return (
         <Grid container spacing={6} sx={{ pb: "40x" }}>
             <Grid item md={6}>
@@ -18,6 +18,7 @@ export default function ProductItem({ product }) {
                     <Button
                         variant="contained"
                         size="large"
+                        onClick={() => { handleAddItem(product) }}
                     >
                         Agregar a mi carrito
                     </Button>
