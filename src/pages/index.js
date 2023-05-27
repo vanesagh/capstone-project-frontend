@@ -8,7 +8,7 @@ import { useItemsSelectedContext } from './itemsSelected-provider';
 import styles from '@/styles/Home.module.css';
 import { Inter } from 'next/font/google';
 
-const inter = Inter({ subsets: ['latin'] })
+const inter = Inter({ subsets: ['latin'] });
 
 
 
@@ -16,17 +16,13 @@ const inter = Inter({ subsets: ['latin'] })
 export default function Home({ products }) {
 
   const router = useRouter();
-  const { itemsList, setItemsList } = useItemsSelectedContext();
+  const { itemsList } = useItemsSelectedContext();
   //console.log(itemsList);
+  const path = router.pathname;
 
-  console.log(router.pathname);
+  //console.log(router.pathname);
 
-  const handleAddItem = (product) => {
-    const items = itemsList;
-    //console.log(product);
-    setItemsList([...items, product]);
 
-  };
   return (
     <>
       <Head>
@@ -40,7 +36,7 @@ export default function Home({ products }) {
         <PageDescription title="Nuestros productos" />
         <section>
           {products.map((product) => (
-            <ProductItem key={product._id} product={product} handleAddItem={handleAddItem} />
+            <ProductItem key={product._id} product={product} />
           ))}
 
         </section>

@@ -1,6 +1,12 @@
 import { Button, Grid, Stack } from "@mui/material";
+import { useRouter } from "next/router";
+import AddProduct2CartComponent from "./AddProduct2Cart";
+import AddDeleteProducComponent from "./AddDeleteProduct";
 
-export default function ProductItem({ product, handleAddItem }) {
+export default function ProductItem({ product }) {
+    const router = useRouter();
+    const path = router.pathname;
+    console.log(path);
     return (
         <Grid container spacing={6} sx={{ pb: "40x" }}>
             <Grid item md={6}>
@@ -15,14 +21,9 @@ export default function ProductItem({ product, handleAddItem }) {
                     <h3>{product.name}</h3>
                     <div>{product.description}</div>
                     <div>Precio: {product.price} MXP</div>
-                    <Button
-                        variant="contained"
-                        size="large"
-                        onClick={() => { handleAddItem(product) }}
-                    >
-                        Agregar a mi carrito
-                    </Button>
-
+                    <>
+                        {path === '/' ? <AddProduct2CartComponent product={product} /> : <AddDeleteProducComponent />}
+                    </>
 
                 </Stack>
             </Grid>
