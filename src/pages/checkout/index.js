@@ -4,6 +4,9 @@ import { useRouter } from "next/router";
 import { useItemsSelectedContext } from "../itemsSelected-provider";
 import { Grid } from "@mui/material";
 import CheckoutTableComponent from "../components/CheckoutTable";
+import CustomerOrderForm from "@/forms/CustomerOrderForm";
+
+
 export default function Checkout() {
     const { itemsList, setItemsList } = useItemsSelectedContext();
     //console.log(itemsList);
@@ -16,8 +19,12 @@ export default function Checkout() {
             </section>
             <section>
                 <Grid container spacing={2}>
-                    <Grid item md={6}>1</Grid>
                     <Grid item md={6}>
+                        <h2>Datos del cliente</h2>
+                        <CustomerOrderForm />
+                    </Grid>
+                    <Grid item md={6}>
+                        <h2>Detalle orden</h2>
                         <CheckoutTableComponent itemsList={itemsList} setItemsList={setItemsList} />
                     </Grid>
 

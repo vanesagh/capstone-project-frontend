@@ -51,7 +51,12 @@ export default function CheckoutTableComponent({ itemsList, setItemsList }) {
         }
     };
     return (
-        <TableContainer component={Paper}>
+        <TableContainer
+            component={Paper}
+            sx={{
+                backgroundColor: 'blue',
+            }}
+        >
             <Table sx={{ minWidth: 300 }} aria-label="simple table">
                 <TableHead>
                     <TableRow>
@@ -75,7 +80,7 @@ export default function CheckoutTableComponent({ itemsList, setItemsList }) {
                             <TableCell align="right"> <Tooltip title="Eliminar item">
                                 <IconButton onClick={() => { handleRemoveItem(index) }}>
                                     <Avatar sx={{ bgcolor: pink[500] }}>
-                                        <DeleteIcon />
+                                        <DeleteIcon fontSize='small' />
                                     </Avatar>
                                 </IconButton>
                             </Tooltip></TableCell>
