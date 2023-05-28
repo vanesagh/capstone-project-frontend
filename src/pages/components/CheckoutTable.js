@@ -54,7 +54,7 @@ export default function CheckoutTableComponent({ itemsList, setItemsList }) {
         <TableContainer
             component={Paper}
             sx={{
-                backgroundColor: 'blue',
+                backgroundColor: 'green',
             }}
         >
             <Table sx={{ minWidth: 300 }} aria-label="simple table">
