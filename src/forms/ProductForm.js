@@ -3,7 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Grid, TextField } from '@mui/material';
 
-export default function CustomerOrderForm({ }) {
+export default function ProductForm({ onSubmit, editValues }) {
     const defaultValues = {
         name: "",
         imageUrl: "",
@@ -11,7 +11,7 @@ export default function CustomerOrderForm({ }) {
         price: "",
     };
 
-    const customerOrderFormSchema = yup.object().shape({
+    const productFormSchema = yup.object().shape({
         name: yup.string().required('Campo obligatorio.Escribe el nombre del producto.'),
         imageUrl: yup.string().required('Campo obligatorio.Escribe la liga de la imagen.'),
         description: yup.string().required('Campo obligatorio.Escribe la descripción del producto.'),
@@ -19,14 +19,20 @@ export default function CustomerOrderForm({ }) {
 
 
     });
-    const { control } = useForm({
-        defaultValues,
-        resolver: yupResolver(customerOrderFormSchema),
+    const { control, watch, reset, handleSubmit } = useForm({
+        defaultValues: editValues || defaultValues,
+        resolver: yupResolver(productFormSchema),
         mode: 'all',
     });
 
     return (
-        <form>
+        <form
+            id='product-form'
+            onReset={() => reset(defaultValues)}
+            onSubmit={handleSubmit(onSubmit)}
+            style={{ padding: '24px' }}
+
+        >
             <Grid container spacing={1}>
                 <Grid item xs={10}>
                     <Controller

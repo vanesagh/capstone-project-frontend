@@ -1,9 +1,9 @@
 import { Button, Grid, Stack } from "@mui/material";
 import { useRouter } from "next/router";
 import AddProduct2CartComponent from "./AddProduct2Cart";
-import AddDeleteProducComponent from "./AddDeleteProduct";
+import EditDeleteProductComponent from "./EditDeleteProduct";
 
-export default function ProductItem({ product }) {
+export default function ProductItem({ product, handleDelete, handleEdit }) {
     const router = useRouter();
     const path = router.pathname;
     console.log(path);
@@ -22,7 +22,7 @@ export default function ProductItem({ product }) {
                     <div>{product.description}</div>
                     <div>Precio: {product.price} MXP</div>
                     <>
-                        {path === '/' ? <AddProduct2CartComponent product={product} /> : <AddDeleteProducComponent />}
+                        {path === '/' ? <AddProduct2CartComponent product={product} /> : <EditDeleteProductComponent handleDelete={handleDelete} handleEdit={handleEdit} />}
                     </>
 
                 </Stack>
