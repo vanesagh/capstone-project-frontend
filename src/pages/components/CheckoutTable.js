@@ -10,39 +10,19 @@ import { Tooltip, IconButton, Avatar } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { green, pink } from '@mui/material/colors';
 
-
-const TAX_RATE = 0.07;
-
-
 function ccyFormat(num) {
     return `${num.toFixed(2)}`;
 }
 
-function priceRow(qty, unit) {
-    return qty * unit;
+function total(items) {
+    return items.map((item) => item.price).reduce((sum, i) => sum + i, 0);
 }
 
-function createRow(desc, qty, unit) {
-    const price = priceRow(qty, unit);
-    return { desc, qty, unit, price };
-}
-
-function subtotal(items) {
-    return items.map(({ price }) => price).reduce((sum, i) => sum + i, 0);
-}
-
-const rows = [
-    createRow('Paperclips (Box)', 100, 1.15),
-    createRow('Paper (Case)', 10, 45.99),
-    createRow('Waste Basket', 2, 17.99),
-];
-
-const invoiceSubtotal = subtotal(rows);
-const invoiceTaxes = TAX_RATE * invoiceSubtotal;
-const invoiceTotal = invoiceTaxes + invoiceSubtotal;
 
 export default function CheckoutTableComponent({ itemsList, setItemsList }) {
     console.log(itemsList);
+    const invoiceTotal = total(itemsList);
+    console.log(invoiceTotal);
     const handleRemoveItem = (productIndex) => {
         const items = itemsList;
         console.log(productIndex);
@@ -84,22 +64,16 @@ export default function CheckoutTableComponent({ itemsList, setItemsList }) {
                                     </Avatar>
                                 </IconButton>
                             </Tooltip></TableCell>
-                            <TableCell align="right">{item.price}</TableCell>
+
+                            <TableCell align="right">{item.price} MXP</TableCell>
                         </TableRow>
                     ))}
 
+
+
                     <TableRow>
-                        <TableCell rowSpan={3} />
-                        <TableCell colSpan={2}>Subtotal</TableCell>
-                        <TableCell align="right">{ccyFormat(invoiceSubtotal)}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell>Tax</TableCell>
-                        <TableCell align="right">{`${(TAX_RATE * 100).toFixed(0)} %`}</TableCell>
-                        <TableCell align="right">{ccyFormat(invoiceTaxes)}</TableCell>
-                    </TableRow>
-                    <TableRow>
-                        <TableCell colSpan={2}>Total</TableCell>
+                        <TableCell colSpan={3}>Total</TableCell>
+
                         <TableCell align="right">{ccyFormat(invoiceTotal)}</TableCell>
                     </TableRow>
                 </TableBody>

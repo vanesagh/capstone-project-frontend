@@ -21,7 +21,7 @@ export default function Checkout() {
                 <Grid container spacing={2}>
                     <Grid item md={6}>
                         <h2>Datos del cliente</h2>
-                        <CustomerOrderForm itemsList={itemsList} />
+                        <CustomerOrderForm itemsList={itemsList} setItemsList={setItemsList} />
                     </Grid>
                     <Grid item md={6}>
                         <h2>Detalle orden</h2>

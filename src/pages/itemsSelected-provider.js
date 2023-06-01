@@ -5,7 +5,6 @@ import { createContext, useContext, useState } from "react";
 const ItemsSelectedContext = createContext({})
 
 export const ItemsSelectedContextProvider = ({ children }) => {
-    const [color, setColor] = useState('red');
     const [itemsList, setItemsList] = useState([]);
 
 

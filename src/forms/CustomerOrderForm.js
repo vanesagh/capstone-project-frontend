@@ -2,8 +2,10 @@ import * as yup from 'yup';
 import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Grid, TextField, Button } from '@mui/material';
+import { useRouter } from 'next/router';
 
-export default function CustomerOrderForm({ itemsList }) {
+export default function CustomerOrderForm({ itemsList, setItemsList }) {
+    const router = useRouter();
     const defaultValues = {
         name: "",
         street: "",
@@ -36,12 +38,13 @@ export default function CustomerOrderForm({ itemsList }) {
 
 
     const onSubmit = data => {
-        //data["orderList"] = await itemsList;
         setValue("orderList", itemsList,
             { shouldValidate: true, })
 
         console.log(data)
-        //reset()
+        reset();
+        setItemsList([]);
+        router.push("/");
 
 
     }

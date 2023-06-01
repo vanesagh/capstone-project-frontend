@@ -40,10 +40,7 @@ export default function Home({ products }) {
           ))}
 
         </section>
-
-
       </main>
-
     </>
   )
 };
