@@ -1,4 +1,4 @@
-import { Button, Grid, Stack } from "@mui/material";
+import { Grid, Stack, Link } from "@mui/material";
 import { useRouter } from "next/router";
 import AddProduct2CartComponent from "./AddProduct2Cart";
 import EditDeleteProductComponent from "./EditDeleteProduct";
@@ -21,6 +21,7 @@ export default function ProductItem({ product, handleDelete, handleEdit }) {
                     <h3>{product.name}</h3>
                     <div>{product.description}</div>
                     <div>Precio: {product.price} MXP</div>
+                    <div><Link href={`/products/${product._id}`}>mas ...</Link></div>
                     <>
                         {path === '/' ? <AddProduct2CartComponent product={product} /> : <EditDeleteProductComponent handleDelete={handleDelete} handleEdit={handleEdit} />}
                     </>
