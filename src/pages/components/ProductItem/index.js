@@ -21,9 +21,19 @@ export default function ProductItem({ product, handleDelete, handleEdit }) {
                     <h3>{product.name}</h3>
                     <div>{product.description}</div>
                     <div>Precio: {product.price} MXP</div>
-                    <div><Link href={`/products/${product._id}`}>mas ...</Link></div>
+
                     <>
-                        {path === '/' ? <AddProduct2CartComponent product={product} /> : <EditDeleteProductComponent handleDelete={handleDelete} handleEdit={handleEdit} />}
+                        {path === '/' ?
+                            <>
+                                <div>
+                                    <button type="button" onClick={() => router.push(`/products/${product._id}`)}>
+                                        mas...
+                                    </button>
+
+                                </div><AddProduct2CartComponent product={product} />
+                            </>
+                            :
+                            <EditDeleteProductComponent handleDelete={handleDelete} handleEdit={handleEdit} />}
                     </>
 
                 </Stack>
