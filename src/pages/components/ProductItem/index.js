@@ -1,6 +1,7 @@
-import { Grid, Stack, Link } from "@mui/material";
+import { Grid, Stack, Button } from "@mui/material";
 import { useRouter } from "next/router";
 import AddProduct2CartComponent from "./AddProduct2Cart";
+import Link from "next/link"
 import EditDeleteProductComponent from "./EditDeleteProduct";
 
 export default function ProductItem({ product, handleDelete, handleEdit }) {
@@ -26,9 +27,9 @@ export default function ProductItem({ product, handleDelete, handleEdit }) {
                         {path === '/' ?
                             <>
                                 <div>
-                                    <button type="button" onClick={() => router.push(`/products/${product._id}`)}>
+                                    <Link href={`/products/${product._id}`}>
                                         mas...
-                                    </button>
+                                    </Link>
 
                                 </div><AddProduct2CartComponent product={product} />
                             </>
