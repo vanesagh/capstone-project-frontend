@@ -6,7 +6,10 @@ import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import AddNewProductModal from "@/modals/AddNewProductModal";
 import EditProductModal from "@/modals/EditProductModal";
-import { createProduct, deleteProduct, updateProduct, getProducts } from "@/api/products";
+import {
+    createProduct, deleteProduct, updateProduct, getProducts
+} from "@/api/products";
+
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -46,7 +49,11 @@ export default function AdminPage() {
 
     const fetchProducts = async () => {
         try {
+
             const products = await getProducts();
+
+            console.log(process.env.NEXT_PUBLIC_SERVER_URL);
+
             setProducts(products);
             console.log(products);
         } catch (error) {
