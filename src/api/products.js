@@ -1,5 +1,4 @@
 
-
 export const getProducts = async () => {
     try {
         const response = await fetch(`${process.env.SERVER_URL}/products`);
