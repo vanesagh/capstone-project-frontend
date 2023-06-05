@@ -1,9 +1,9 @@
-import PageDescription from "../components/PageDescription";
-import StoreNavBar from "../components/StoreNavBar";
+import PageDescription from "../../components/PageDescription";
+import StoreNavBar from "../../components/StoreNavBar";
 import { useRouter } from "next/router";
-import ItemsSelectedContext from "../context/itemsSelected-provider";
+import ItemsSelectedContext from "../../context/itemsSelected-provider";
 import { Grid } from "@mui/material";
-import CheckoutTableComponent from "../components/CheckoutTable";
+import CheckoutTableComponent from "../../components/CheckoutTable";
 import CustomerOrderForm from "@/forms/CustomerOrderForm";
 import { useContext } from "react";
 

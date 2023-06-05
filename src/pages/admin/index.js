@@ -1,5 +1,5 @@
-import PageDescription from "../components/PageDescription";
-import ProductItem from "../components/ProductItem";
+import PageDescription from "../../components/PageDescription";
+import ProductItem from "../../components/ProductItem";
 import { Button } from "@mui/material";
 import { useEffect, useState } from "react";
 import { Inter } from 'next/font/google';

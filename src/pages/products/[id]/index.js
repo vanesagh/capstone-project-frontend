@@ -1,7 +1,8 @@
 import { Grid, Box } from "@mui/material";
-import PageDescription from "@/pages/components/PageDescription";
-import StoreNavBar from "@/pages/components/StoreNavBar";
-import ItemsSelectedContext from "@/pages/context/itemsSelected-provider";
+import PageDescription from "@/components/PageDescription";
+import StoreNavBar from "@/components/StoreNavBar";
+import ItemsSelectedContext from "@/context/itemsSelected-provider";
+import { useContext } from "react";
 import styles from '@/styles/Home.module.css';
 import { Inter } from 'next/font/google';
 
@@ -11,8 +12,8 @@ import { getProduct, getProducts } from "@/api/products";
 const inter = Inter({ subsets: ['latin'] });
 
 function Product({ product }) {
-    const useItemsSelectedContext = () => useContext(ItemsSelectedContext);
-    const { itemsList } = useItemsSelectedContext();
+    const useItemsSelectedContext = useContext(ItemsSelectedContext);
+    const { itemsList } = useItemsSelectedContext;
     //console.log(itemsList);
 
 
