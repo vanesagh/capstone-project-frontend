@@ -6,6 +6,7 @@ import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import AddNewProductModal from "@/modals/AddNewProductModal";
 import EditProductModal from "@/modals/EditProductModal";
+import { createProduct, deleteProduct, getProducts, updateProduct } from "@/api/products";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,31 +21,38 @@ export default function AdminPage() {
 
     const fetchProducts = async () => {
         try {
-            const response = await fetch("http://localhost:3000/api/products");
-            const responseJson = await response.json();
-            setProducts(responseJson);
+            const products = await getProducts();
+            setProducts(products);
         } catch (error) {
             console.log(error);
         }
     };
 
-    const handleOnSubmit = values => {
+    const handleOnSubmit = async values => {
         const tempProducts = Array.from(products);
         if (!!values._id) {
-            const productIndex = tempProducts.findIndex(p => p._id === values._id);
-            tempProducts[productIndex] = values;
+            const updatedProduct = await updateProduct(values);
+            const productIndex = tempProducts.findIndex(p => p._id === updatedProduct._id);
+            tempProducts[productIndex] = updatedProduct;
+
         } else {
-            tempProducts.push({
-                ...values,
-                _id: products.length + 1,
-            });
+            const newProduct = await createProduct(values);
+            tempProducts.push(newProduct);
+
         }
         setProducts(tempProducts);
 
     };
 
-    const handleDelete = id =>
-        setProducts(prev => prev.filter(p => p._id !== id));
+    const handleDelete = async id => {
+        const isDeleted = await deleteProduct(id);
+        if (isDeleted)
+            setProducts(prev => prev.filter(p => p._id !== id))
+
+    };
+
+
+
     return (
         <>
             <main className={`${styles.main} ${inter.className}`}>

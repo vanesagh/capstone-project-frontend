@@ -6,6 +6,7 @@ import styles from '@/styles/Home.module.css';
 import { Inter } from 'next/font/google';
 
 import Image from "next/image";
+import { getProduct, getProducts } from "@/api/products";
 
 const inter = Inter({ subsets: ['latin'] });
 
@@ -58,8 +59,7 @@ function Product({ product }) {
 
 export async function getStaticPaths() {
     try {
-        const response = await fetch(`http://localhost:3000/api/products/`);
-        const products = await response.json();
+        const products = await getProducts();
         const paths = products.map((product) => {
             return { params: { id: product._id.toString() } };
         });
@@ -78,8 +78,8 @@ export async function getStaticPaths() {
 
 export async function getStaticProps({ params }) {
     try {
-        const response = await fetch(`http://localhost:3000/api/products/${params.id}`);
-        const product = await response.json();
+        const product = await getProduct(params.id);
+
         return {
             props: {
                 product,
