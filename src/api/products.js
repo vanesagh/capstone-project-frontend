@@ -16,7 +16,7 @@ export const getProducts = async () => {
 
 export const getProduct = async (id) => {
     try {
-        const response = await fetch(`${process.env.SERVER_URL}/products/${id}`);
+        const response = await fetch(`${SERVER_URL}/products/${id}`);
         const productJson = await response.json();
         return productJson.product;
 
@@ -30,7 +30,7 @@ export const getProduct = async (id) => {
 
 export const updateProduct = async product => {
     try {
-        const response = await fetch(`${process.env.SERVER_URL}/products/${product._id}`, {
+        const response = await fetch(`${SERVER_URL}/products/${product._id}`, {
             method: 'PUT',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(product),
@@ -47,7 +47,7 @@ export const updateProduct = async product => {
 
 export const createProduct = async product => {
     try {
-        const response = await fetch(`${process.env.SERVER_URL}/products`, {
+        const response = await fetch(`${SERVER_URL}/products`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(product),
@@ -64,7 +64,7 @@ export const createProduct = async product => {
 
 export const deleteProduct = async id => {
     try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/products/${id}`, {
+        const response = await fetch(`${SERVER_URL}/products/${id}`, {
             method: 'DELETE',
         });
 
