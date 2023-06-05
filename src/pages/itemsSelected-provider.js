@@ -15,4 +15,4 @@ export const ItemsSelectedContextProvider = ({ children }) => {
     )
 };
 
-export default useItemsSelectedContext = () => useContext(ItemsSelectedContext);
+export const useItemsSelectedContext = () => useContext(ItemsSelectedContext);
