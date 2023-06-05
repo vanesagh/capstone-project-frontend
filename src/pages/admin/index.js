@@ -6,7 +6,7 @@ import { Inter } from 'next/font/google';
 import styles from '@/styles/Home.module.css';
 import AddNewProductModal from "@/modals/AddNewProductModal";
 import EditProductModal from "@/modals/EditProductModal";
-import { createProduct, deleteProduct, getProducts, updateProduct } from "@/api/products";
+import { createProduct, deleteProduct, updateProduct, getProducts } from "@/api/products";
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -19,14 +19,7 @@ export default function AdminPage() {
         fetchProducts()
     }, []);
 
-    const fetchProducts = async () => {
-        try {
-            const products = await getProducts();
-            setProducts(products);
-        } catch (error) {
-            console.log(error);
-        }
-    };
+
 
     const handleOnSubmit = async values => {
         const tempProducts = Array.from(products);
@@ -49,6 +42,16 @@ export default function AdminPage() {
         if (isDeleted)
             setProducts(prev => prev.filter(p => p._id !== id))
 
+    };
+
+    const fetchProducts = async () => {
+        try {
+            const products = await getProducts();
+            setProducts(products);
+            console.log(products);
+        } catch (error) {
+            console.log(error);
+        }
     };
 
 
