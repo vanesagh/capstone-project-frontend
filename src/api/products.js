@@ -2,7 +2,7 @@ require("dotenv").config();
 const SERVER_URL = "https://repo-angeles-production.up.railway.app";
 export const getProducts = async () => {
     try {
-        const response = await fetch(`${process.env.SERVER_URL}/products`);
+        const response = await fetch(`${SERVER_URL}/products`);
         //console.log(response);
         const productsJson = await response.json();
         return productsJson.products;
