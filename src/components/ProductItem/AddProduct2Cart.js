@@ -1,9 +1,11 @@
 import { Button } from "@mui/material";
-import { useItemsSelectedContext } from "@/pages/itemsSelected-provider";
+import ItemsSelectedContext from "@/context/itemsSelected-provider";
+import { useContext } from "react";
 
 
 export default function AddProduct2CartComponent({ product }) {
-    const { itemsList, setItemsList } = useItemsSelectedContext();
+    const useItemsSelectedContext = useContext(ItemsSelectedContext);
+    const { itemsList, setItemsList } = useItemsSelectedContext;
 
     const handleAddItem = (product) => {
         const items = itemsList;
