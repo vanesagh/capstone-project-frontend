@@ -1,18 +1,8 @@
 'use client';
 
-import { createContext, useContext, useState } from "react";
+import { createContext } from "react";
 
-const ItemsSelectedContext = createContext({})
-
-export const ItemsSelectedContextProvider = ({ children }) => {
-    const [itemsList, setItemsList] = useState([]);
+const ItemsSelectedContext = createContext();
 
 
-    return (
-        <ItemsSelectedContext.Provider value={{ itemsList, setItemsList }}>
-            {children}
-        </ItemsSelectedContext.Provider>
-    )
-};
-
-export const useItemsSelectedContext = () => useContext(ItemsSelectedContext);
+export default ItemsSelectedContext;

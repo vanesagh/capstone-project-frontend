@@ -4,7 +4,8 @@ import ProductItem from './components/ProductItem';
 import PageDescription from './components/PageDescription';
 import StoreNavBar from './components/StoreNavBar';
 import { useRouter } from 'next/router';
-import { useItemsSelectedContext } from './context/itemsSelected-provider';
+import { useContext } from 'react';
+import ItemsSelectedContext from './context/itemsSelected-provider';
 import styles from '@/styles/Home.module.css';
 import { Inter } from 'next/font/google';
 import { getProducts } from '@/api/products';
@@ -14,7 +15,8 @@ const inter = Inter({ subsets: ['latin'] });
 export default function Home({ products }) {
 
   const router = useRouter();
-  const { itemsList } = useItemsSelectedContext();
+  const useItemsSelectedContext = useContext(ItemsSelectedContext);
+  const { itemsList } = useItemsSelectedContext;
   //console.log(itemsList);
   const path = router.pathname;
 

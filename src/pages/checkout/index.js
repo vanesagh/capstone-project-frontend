@@ -1,13 +1,15 @@
 import PageDescription from "../components/PageDescription";
 import StoreNavBar from "../components/StoreNavBar";
 import { useRouter } from "next/router";
-import { useItemsSelectedContext } from "../context/itemsSelected-provider";
+import ItemsSelectedContext from "../context/itemsSelected-provider";
 import { Grid } from "@mui/material";
 import CheckoutTableComponent from "../components/CheckoutTable";
 import CustomerOrderForm from "@/forms/CustomerOrderForm";
+import { useContext } from "react";
 
 
 export default function Checkout() {
+    const useItemsSelectedContext = () => useContext(ItemsSelectedContext);
     const { itemsList, setItemsList } = useItemsSelectedContext();
     //console.log(itemsList);
     const router = useRouter();
