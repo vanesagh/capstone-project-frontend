@@ -1,7 +1,7 @@
 import { Grid, Box } from "@mui/material";
 import PageDescription from "@/pages/components/PageDescription";
 import StoreNavBar from "@/pages/components/StoreNavBar";
-import { useItemsSelectedContext } from "@/pages/itemsSelected-provider";
+import { useItemsSelectedContext } from "@/pages/context/itemsSelected-provider";
 import styles from '@/styles/Home.module.css';
 import { Inter } from 'next/font/google';
 

@@ -4,7 +4,7 @@ import ProductItem from './components/ProductItem';
 import PageDescription from './components/PageDescription';
 import StoreNavBar from './components/StoreNavBar';
 import { useRouter } from 'next/router';
-import { useItemsSelectedContext } from './itemsSelected-provider';
+import { useItemsSelectedContext } from './context/itemsSelected-provider';
 import styles from '@/styles/Home.module.css';
 import { Inter } from 'next/font/google';
 import { getProducts } from '@/api/products';

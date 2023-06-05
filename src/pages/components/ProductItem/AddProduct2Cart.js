@@ -1,5 +1,5 @@
 import { Button } from "@mui/material";
-import { useItemsSelectedContext } from "@/pages/itemsSelected-provider";
+import { useItemsSelectedContext } from "@/pages/context/itemsSelected-provider";
 
 
 export default function AddProduct2CartComponent({ product }) {
