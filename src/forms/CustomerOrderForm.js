@@ -3,6 +3,7 @@ import { useForm, Controller } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Grid, TextField, Button } from '@mui/material';
 import { useRouter } from 'next/router';
+import { createCustomerOrder } from '@/api/customerOrder';
 
 export default function CustomerOrderForm({ itemsList, setItemsList }) {
     const router = useRouter();
@@ -38,10 +39,12 @@ export default function CustomerOrderForm({ itemsList, setItemsList }) {
 
 
     const onSubmit = data => {
-        setValue("orderList", itemsList,
+        const idItemsList = itemsList.map(idItem => idItem._id);
+        setValue("orderList", idItemsList,
             { shouldValidate: true, })
 
-        console.log(data)
+        console.log(data);
+        createCustomerOrder(data);
         reset();
         setItemsList([]);
         router.push("/");
