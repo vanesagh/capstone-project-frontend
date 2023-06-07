@@ -41,6 +41,7 @@ export default function ProductForm({ onSubmit, editValues }) {
                         render={({ field, fieldState }) => (
                             <TextField
                                 {...field}
+
                                 label='Nombre del producto'
                                 variant='outlined'
                                 fullWidth
@@ -103,8 +104,6 @@ export default function ProductForm({ onSubmit, editValues }) {
                         )}
                     />
                 </Grid>
-
-
             </Grid>
         </form >
     );
